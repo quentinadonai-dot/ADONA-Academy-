@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adonaï Academy — Créez et vendez votre premier ebook</title>
+<meta name="description" content="Adonaï Academy aide les débutants et créateurs à créer, structurer et vendre des ebooks professionnels grâce à des packs de prompts prêts à l’emploi.">
+<meta property="og:title" content="Adonaï Academy — Créez et vendez votre premier ebook">
+<meta property="og:description" content="Des packs de prompts prêts à l’emploi pour créer un ebook professionnel et le vendre sur Chariow.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f6f4;
+  --surface:#ffffff;
+  --ink:#18181b;
+  --muted:#6b7280;
+  --line:#e6e8eb;
+  --teal:#20808d;
+  --teal-dark:#155f69;
+  --teal-soft:#e7f3f4;
+  --radius:20px;
+  --shadow:0 18px 45px rgba(15,23,42,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1140px,92%);margin:0 auto}
+
+/* Header */
+header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(246,246,244,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(230,232,235,.8)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}
+.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#20808d,#3ba7b5);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 8px 20px rgba(32,128,141,.22)}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:.93rem;color:var(--muted)}
+.nav-links a{position:relative;padding:5px 0;transition:.25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--teal);border-radius:2px;transition:width .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:12px 22px;font-weight:650;font-size:.94rem;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px rgba(32,128,141,.24)}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);background:#fff;color:var(--ink)}
+.btn-ghost:hover{border-color:#c9ced6;transform:translateY(-2px)}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:12px;font-size:1.2rem;cursor:pointer}
+.mobile-menu{display:none;position:fixed;inset:70px 4% auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);z-index:99}
+.mobile-menu.open{display:block;animation:fadeUp .25s ease}
+.mobile-menu a{display:block;padding:12px;border-radius:12px;color:var(--muted);font-weight:600}
+.mobile-menu a:hover{background:var(--teal-soft);color:var(--teal-dark)}
+
+/* Hero */
+.hero{position:relative;padding:150px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-180px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(32,128,141,.16),transparent 65%);filter:blur(10px)}
+.hero::after{content:"";position:absolute;bottom:-220px;left:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(59,167,181,.14),transparent 65%)}
+.hero-inner{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-soft);color:var(--teal-dark);font-size:.79rem;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:24px;letter-spacing:.02em}
+h1{font-size:clamp(2.4rem,5.6vw,4.15rem);line-height:1.04;letter-spacing:-.05em;font-weight:900;max-width:830px}
+h1 span{color:var(--teal)}
+.hero p{max-width:660px;color:var(--muted);font-size:1.09rem;margin:24px 0 34px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-card{margin-top:60px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat strong{display:block;font-size:1.65rem;letter-spacing:-.04em}
+.stat span{color:var(--muted);font-size:.88rem}
+.stat{padding:8px 16px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+
+/* Sections */
+section{padding:84px 0}
+.section-head{max-width:680px;margin-bottom:44px}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem);letter-spacing:-.04em;line-height:1.12;font-weight:800}
+.section-head p{color:var(--muted);margin-top:15px;font-size:1.03rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 22px 50px rgba(15,23,42,.09)}
+.icon{width:46px;height:46px;border-radius:14px;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;font-size:1.15rem;margin-bottom:20px}
+.card h3{font-size:1.14rem;letter-spacing:-.02em;margin-bottom:9px}
+.card p{color:var(--muted);font-size:.95rem}
+
+/* Packs */
+.packs{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.pack{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.pack:hover{transform:translateY(-6px);box-shadow:0 25px 60px rgba(15,23,42,.11)}
+.pack.featured{border:1.5px solid rgba(32,128,141,.35);background:linear-gradient(180deg,#fff, #f4fafb)}
+.pack-tag{font-size:.73rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-soft);padding:7px 12px;border-radius:999px;width:fit-content;margin-bottom:20px}
+.badge{position:absolute;top:24px;right:24px;background:#fff7ed;color:#b45309;font-size:.75rem;font-weight:700;padding:6px 11px;border-radius:999px}
+.pack h3{font-size:1.4rem;letter-spacing:-.03em;margin-bottom:10px}
+.pack>p{color:var(--muted);font-size:.96rem}
+.pack ul{margin:24px 0 28px;padding-left:0;list-style:none}
+.pack li{display:flex;gap:10px;color:#374151;font-size:.94rem;margin-bottom:11px}
+.pack li::before{content:"✓";color:var(--teal);font-weight:800}
+.pack-footer{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-top:22px;border-top:1px solid var(--line)}
+.price{font-size:1.55rem;font-weight:850;letter-spacing:-.04em}
+.price small{display:block;font-size:.76rem;color:var(--muted);font-weight:500;margin-top:3px}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:transform .25s}
+.step:hover{transform:translateY(-5px)}
+.step-num{width:36px;height:36px;border-radius:11px;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:18px}
+.step h3{font-size:1.05rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.93rem}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:0;text-align:left;padding:20px 22px;font-family:inherit;font-size:1rem;font-weight:650;cursor:pointer;display:flex;justify-content:space-between;gap:16px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 22px;color:var(--muted)}
+.faq-item.active .faq-a{max-height:280px;padding-bottom:20px}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#0e5761,#20808d);color:#fff;border-radius:30px;padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;top:-120px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%)}
+.cta h2{color:#fff}
+.cta p{color:rgba(255,255,255,.82);max-width:600px;margin:16px auto 32px}
+.cta .btn-primary{background:#fff;color:var(--teal-dark);box-shadow:none}
+.cta .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.9rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+
+/* Animations */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:920px){
+  .nav-links{display:none}.menu-btn{display:grid;place-items:center}
+  .grid,.packs,.steps{grid-template-columns:1fr}
+  .hero{padding:120px 0 60px}
+  .hero-card{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}
+  .stat:last-child{border-bottom:0}
+  .pack,.card,.step{padding:26px}
+  section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#accueil"><span class="logo">A</span> Adonaï Academy</a>
+    <nav class="nav-links">
+      <a href="#methode">Méthode</a>
+      <a href="#prompts">Packs</a>
+      <a href="#process">Comment ça marche</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary" href="#prompts">Voir les packs</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#methode">Méthode</a>
+    <a href="#prompts">Packs</a>
+    <a href="#process">Comment ça marche</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:quentinadonai@gmail.com">Contact</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="container hero-inner">
+    <span class="eyebrow">● Création de produits numériques</span>
+    <h1>Créez votre premier ebook professionnel et vendez-le sur <span>Chariow</span>.</h1>
+    <p>Adonaï Academy vous accompagne avec des packs de prompts prêts à l’emploi, conçus pour transformer une idée en ebook structuré, utile et prêt à être commercialisé.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#prompts">Découvrir les packs</a>
+      <a class="btn btn-ghost" href="#methode">Voir la méthode</a>
+    </div>
+
+    <div class="hero-card">
+      <div class="stat"><strong>2 packs</strong><span>Débutant et intermédiaire</span></div>
+      <div class="stat"><strong>Étape par étape</strong><span>De l’idée à la publication</span></div>
+      <div class="stat"><strong>Prêts à l’emploi</strong><span>Prompts à copier dans ChatGPT</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="methode">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Une méthode simple, claire et actionnable</h2>
+      <p>Vous n’avez pas besoin d’être expert en rédaction, design ou marketing. Suivez les prompts dans l’ordre et construisez votre ebook progressivement.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal"><div class="icon">◎</div><h3>Trouver une idée</h3><p>Identifiez un problème réel, une audience précise et une promesse claire pour votre ebook.</p></div>
+      <div class="card reveal"><div class="icon">✎</div><h3>Créer le contenu</h3><p>Générez un plan, rédigez chaque chapitre, ajoutez des exemples, exercices et bonus pratiques.</p></div>
+      <div class="card reveal"><div class="icon">↗</div><h3>Vendre sur Chariow</h3><p>Préparez la fiche produit, les visuels, le prix, les publications et les réponses aux objections.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prompts">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Les packs de prompts Adonaï Academy</h2>
+      <p>Choisissez le pack adapté à votre niveau : du tout premier ebook à un produit plus structuré et commercial.</p>
+    </div>
+
+    <div class="packs">
+      <article class="pack reveal">
+        <span class="pack-tag">Pack débutant</span>
+        <h3>Pack Ebook Débutant</h3>
+        <p>Idéal si vous créez votre premier ebook et que vous ne savez pas par où commencer. ChatGPT vous guide question par question, avec des explications simples.</p>
+        <ul>
+          <li>Choisir une idée d’ebook adaptée à votre niveau</li>
+          <li>Valider l’idée et comprendre votre audience</li>
+          <li>Créer un plan simple et facile à suivre</li>
+          <li>Rédiger les chapitres sans expérience en rédaction</li>
+          <li>Créer une couverture et une fiche produit Chariow</li>
+          <li>Préparer vos premières publications de lancement</li>
+        </ul>
+        <div class="pack-footer">
+          <div class="price">3 530 FCFA<small>Vous encaissez 3 000 FCFA</small></div>
+          <a class="btn btn-primary" href="#" aria-label="Acheter le pack débutant">Obtenir le pack</a>
+        </div>
+      </article>
+
+      <article class="pack featured reveal">
+        <span class="badge">Recommandé</span>
+        <span class="pack-tag">Pack intermédiaire</span>
+        <h3>Pack Ebook Intermédiaire</h3>
+        <p>Pour les créateurs qui veulent aller plus loin : structurer un ebook professionnel, améliorer la qualité, créer une offre attractive et lancer une campagne de vente.</p>
+        <ul>
+          <li>Valider une idée avec une analyse critique</li>
+          <li>Créer un plan détaillé et un ebook actionnable</li>
+          <li>Rédiger, relire et améliorer chaque chapitre</li>
+          <li>Créer des bonus à forte valeur perçue</li>
+          <li>Rédiger une fiche produit persuasive pour Chariow</li>
+          <li>Définir un prix, lancer la promotion et répondre aux objections</li>
+        </ul>
+        <div class="pack-footer">
+          <div class="price">5 883 FCFA<small>Vous encaissez 5 000 FCFA</small></div>
+          <a class="btn btn-primary" href="#" aria-label="Acheter le pack intermédiaire">Obtenir le pack</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Comment utiliser les packs</h2>
+      <p>Chaque pack est organisé dans un ordre logique. Copiez le prompt, répondez aux questions de ChatGPT, puis passez à l’étape suivante.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><h3>Choisissez votre pack</h3><p>Débutant si c’est votre premier ebook, intermédiaire si vous voulez une approche plus complète.</p></div>
+      <div class="step reveal"><div class="step-num">2</div><h3>Copiez le prompt</h3><p>Collez-le dans ChatGPT et remplacez uniquement les éléments entre crochets.</p></div>
+      <div class="step reveal"><div class="step-num">3</div><h3>Suivez les étapes</h3><p>ChatGPT vous guide, propose des options et vous aide à construire votre ebook progressivement.</p></div>
+      <div class="step reveal"><div class="step-num">4</div><h3>Publiez sur Chariow</h3><p>Mettez votre PDF en ligne, ajoutez votre fiche produit et partagez votre lien de vente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Questions fréquentes</h2>
+      <p>Les réponses essentielles avant de commencer.</p>
+    </div>
+    <div class="faq">
+      <div class="faq-item reveal">
+        <button class="faq-q">Je suis débutant, puis-je utiliser ces packs ? <span>+</span></button>
+        <div class="faq-a"><p>Oui. Le Pack Débutant a été conçu pour vous accompagner étape par étape, avec des explications simples et des questions posées une par une.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Comment receiving les packs après l’achat ? <span>+</span></button>
+        <div class="faq-a"><p>Après votre paiement sur Chariow, vous recevrez automatiquement le fichier du pack choisi.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Les prompts garantissent-ils des ventes ? <span>+</span></button>
+        <div class="faq-a"><p>Non. Les packs vous aident à créer un ebook structuré et à préparer votre lancement, mais les résultats dépendent aussi de votre sujet, de votre audience et de vos efforts de promotion.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Puis-je utiliser ChatGPT gratuitement ? <span>+</span></button>
+        <div class="faq-a"><p>Oui, vous pouvez utiliser les prompts avec une version gratuite de ChatGPT. Une version payante peut offrir davantage de confort, mais elle n’est pas obligatoire.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="cta reveal">
+      <h2>Prêt à créer votre premier ebook ?</h2>
+      <p>Choisissez le pack adapté à votre niveau et avancez avec une méthode claire, structurée et pensée pour les créateurs de produits numériques.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-primary" href="#prompts">Voir les packs</a>
+        <a class="btn btn-ghost" href="mailto:quentinadonai@gmail.com">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 Adonaï Academy. Tous droits réservés.</div>
+    <div><a href="mailto:quentinadonai@gmail.com">quentinadonai@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('active')});
+    item.classList.toggle('active');
+    btn.querySelector('span').textContent=item.classList.contains('active')?'−':'+';
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
